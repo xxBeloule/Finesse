@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteRule ^accueil$  index.php
+RewriteRule ^galerie views/gallery.php
+RewriteRule ^deconnection$ views/disconnection.php
+RewriteRule ^boutique$ views/shop.php
+RewriteRule ^contact$ views/contact.php
+RewriteRule ^FAQ$ views/questions.php
+RewriteRule ^connexion$ views/connection.php
+RewriteRule ^admin/updateproduct/([0-9]+)$ admin/updateproduct.php?id=$1
+RewriteRule ^admin/delete-product/([0-9]+)$ admin/delete-product.php?id=$1
+RewriteRule ^profil$ views/profil.php
+RewriteRule ^admin/message$ admin/message.php
+RewriteRule ^admin/index admin/index.php
+RewriteRule ^admin/messageinfo/([0-9]+)$ admin/messageinfo.php?id=$1
+ErrorDocument 404 /404.php
