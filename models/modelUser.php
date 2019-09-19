@@ -73,15 +73,39 @@ class User {
                 if ($isPasswordCorrect) {
                     $_SESSION['id'] = $resultat['id_u'];
                     $_SESSION['password'] = $resultat['password'];
-                    $_SESSION['mail'] = $resultat['mail'];
                     $_SESSION['pseudo'] = $pseudo;
+                    $_SESSION['mail'] = $resultat['mail'];
+                    $_SESSION['name'] = $resultat['name'];
+                    $_SESSION['firstname'] = $resultat['firstname'];
+                    $_SESSION['street'] = $resultat['street'];
                     $_SESSION['superuser'] = $resultat['superuser'];
                     $_SESSION['zipcode'] = $resultat['zipCode'];
+                    $_SESSION['city'] = $resultat['city'];
                     header('location:accueil');
                 } else {
                     $verif = "Le pseudo ou le mot de passe utilisé est incorrect";
                 }
             }
+        }
+    }
+
+    public function updateUser($id, $name, $firstname, $mail, $zipcode, $city, $street, $pseudo) {
+        try {
+            $sql = "UPDATE users SET name =:name ,firstname = :firstname , mail = :mail , zipcode =:zipcode , city = :city, street = :street, pseudo = :pseudo  WHERE id_u = :id";
+            // $this->db->prepare($sql);
+            $req = $this->db->prepare($sql);
+            $req->bindValue(':id', $id, PDO::PARAM_INT);
+            $req->bindValue(':name', $name, PDO::PARAM_STR);
+            $req->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+            $req->bindValue(':mail', $mail, PDO::PARAM_STR);
+            $req->bindValue(':zipcode', $zipcode, PDO::PARAM_INT);
+            $req->bindValue(':city', $city, PDO::PARAM_STR);
+            $req->bindValue(':street', $street, PDO::PARAM_STR);
+            $req->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+            $req->execute();
+            $error = $req->errorInfo();
+        } catch (Exception $e) {
+            die($e->getMessage());
         }
     }
 

@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php session_start(); 
+$tle = 'Accueil';?>
 <!DOCTYPE html>
 <html lang="fr">
     <?php require 'head/header.php'; ?>

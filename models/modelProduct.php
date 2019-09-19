@@ -33,20 +33,19 @@ class Product {
 
             $poids_max = 512000; // Poids max de l'image en octets (1Ko = 1024 octets)
             $repertoire = '../uploads/'; // Repertoire d'upload
-            if ($_FILES['fichier']['type'] == 'image/jpeg') {
+            if ($_FILES['fichier']['type'] == 'image/jpeg' || $_FILES['fichier']['type'] == 'image/JPEG') {
                 $extention = '.jpeg';
             }
-            if ($_FILES['fichier']['type'] == 'image/jpeg') {
+            if ($_FILES['fichier']['type'] == 'image/jpg' || $_FILES['fichier']['type'] == 'image/JPG') {
                 $extention = '.jpg';
             }
-            if ($_FILES['fichier']['type'] == 'image/png') {
+            if ($_FILES['fichier']['type'] == 'image/png' || $_FILES['fichier']['type'] == 'image/PNG') {
                 $extention = '.png';
             }
-            if ($_FILES['fichier']['type'] == 'image/gif') {
+            if ($_FILES['fichier']['type'] == 'image/gif' || $_FILES['fichier']['type'] == 'image/GIF') {
                 $extention = '.gif';
             }
             $nom_fichier = time() . $extention;
-
             // On upload le fichier sur le serveur.
             if (move_uploaded_file($_FILES['fichier']['tmp_name'], $repertoire . $nom_fichier)) {
                 $url = '/' . $repertoire . '' . $nom_fichier . '';
@@ -109,7 +108,7 @@ class Product {
         }
     }
 
-     public function updateProductWithOutImg($id, $title, $description, $price) {
+    public function updateProductWithOutImg($id, $title, $description, $price) {
         try {
             $sql = "UPDATE product SET title=:title,description=:description,price=:price  WHERE id_p = :id";
             // $this->db->prepare($sql);

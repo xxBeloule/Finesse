@@ -21,26 +21,70 @@ include('../controllers/FindUpdateProduct.php');
                 <div class="text-center mb-4 mt-3">
                     <a href=".."><img class="resize" src="../../assets/img/logoe_FIS.png" alt="Image finesse"></a>
                 </div>
+                <h2 class="text-center">Administration</h2>
+                <hr class="w-25">
+                <div class="d-flex justify-content-center">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <div class="collapse navbar-collapse">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active mr-5 ml-5">
+                                    <a class="nav-link" href="/..">Accueil</a>
+                                </li>
+                                <li class="nav-item active mr-5 ml-5">
+                                    <a class="nav-link" href="../message">Messages</a>
+                                </li>
+                                <li class="nav-item active mr-5 ml-5">
+                                    <a class="nav-link" href="../index">œuvres</a>
+                                </li>
+                                <?php if (isset($_SESSION['id'])): ?>
+                                    <li class="nav-item active ml-5 mr-5">
+                                        <a class="nav-link" href="../../deconnection">Déconnexion</a>
+                                    </li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
                 <form action="#" method="post" enctype="multipart/form-data">
                     <div class="bg-light border border-dark rounded-lg m-5 p-5 text-center">
-                        <div class="form-group">
+                        <h2 class="m-3 mb-5">Modifier une oeuvre</h2>
+                        <p class="text-success m-2"><?php
+                            if (!empty($valid)) {
+                                echo $valid;
+                            }
+                            ?></p>
+
+                        <div class="form-group m-5">
                             <label for="title">Titre :</label>
                             <input class="form-control" type="text" name="title" value="<?= $FindList->title; ?>">
+                            <p class="text-danger small m-2"><?php
+                                if (!empty($error_title)) {
+                                    echo $error_title;
+                                }
+                                ?></p>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group m-5">
                             <label for="description">Description :</label>
                             <textarea class="form-control" type="text" name="description"><?= $FindList->description; ?></textarea>
+                            <p class="text-danger small m-2"><?php
+                                if (!empty($error_description)) {
+                                    echo $error_description;
+                                }
+                                ?></p>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group m-5">
                             <label for="price">Prix :</label>
                             <input  class="form-control" type="text" name="price" value="<?= $FindList->price; ?>">
+                            <p class="text-danger small m-2"><?php
+                                if (!empty($error_price)) {
+                                    echo $error_price;
+                                }
+                                ?></p>
                         </div>
-                        <div class="form-group">
-                            <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $poids_max; ?>">
+                        <div class="form-group m-5">
                             <input class="form-control-file" type="file" name="fichier">
                         </div>
-                        <input class="btn btn-outline-success"type="submit" name="update" value="Mettre à jour">
-                        <a class="btn btn-outline-danger" href="../">Retour</a></td>
-
+                        <input class="btn btn-outline-success btn-sm"type="submit" name="update" value="Mettre à jour">
+                        <a class="btn btn-outline-danger btn-sm" href="../">Retour</a></td>
                     </div>
                 </form>

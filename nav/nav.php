@@ -2,9 +2,12 @@
     <div class="text-center mb-4 mt-3">
         <a href="accueil"><img class="resize" src="../assets/img/logoe_FIS.png" alt="Image finesse"></a>
     </div>
-    <div class="d-flex justify-content-center">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="collapse navbar-collapse">
+    <nav class="d-flex justify-content-center">
+        <div class="navbar navbar-expand-sm navbar-light">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="bg-white hidden">&#9776</span>
+  </button>
+            <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav">
                     <li class="nav-item active mr-5 ml-5">
                         <a class="nav-link" href="galerie">Galerie</a>
@@ -51,6 +54,6 @@
                     </div>
                 </ul>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
 </header>

@@ -38,7 +38,7 @@ include('../controllers/readMessageController.php');
                                     <a class="nav-link" href="../message">Messages</a>
                                 </li>
                                 <li class="nav-item active mr-5 ml-5">
-                                    <a class="nav-link" href="../index">Oeuvres</a>
+                                    <a class="nav-link" href="../index">œuvres</a>
                                 </li>
                                 <?php if (isset($_SESSION['id'])): ?>
                                     <li class="nav-item active ml-5 mr-5">
